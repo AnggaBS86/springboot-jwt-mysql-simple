@@ -33,8 +33,7 @@ public class UserService implements UserDetailsService {
 
 		// Get username value
 		var userData = userRepository.findByUsername(username);
-		// userData.orElseThrow(()-> new UsernameNotFoundException("Invalid `username`
-		// credential!"));
+		userData.orElseThrow(()-> new UsernameNotFoundException("Invalid `username` credential!"));
 
 		return userData.map(UserDetailsImpl::new).get();
 	}
